@@ -1,4 +1,8 @@
-@host=https://3001-blush-giraffe-5n4xdyte.ws-us11.gitpod.io/api
+@host=https://3001-scarlet-albatross-j6d53h3q.ws-us11.gitpod.io/api
+
+### Creacion de Hash
+POST {{host}}/hash
+Content-Type: application/json
 
 
 ### REGISTER
@@ -6,9 +10,9 @@ POST {{host}}/register
 Content-Type: application/json
 
 {
-    "email":"la@guagua.cl",
-    "password":"87654321",
-    "username":"guagua"
+    "email":"apo@lo.cl",
+    "password":"PASSword",
+    "username":"apolo"
 }
 
 # {

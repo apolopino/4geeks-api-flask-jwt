@@ -12,7 +12,7 @@ api = Blueprint('api', __name__)
 
 
 @api.route('/users', methods=['POST', 'GET'])
-# @jwt_required()
+@jwt_required() #Esto se agrega para que exija un token para responder esto
 def handle_hello():
     users = User.query.all()
     users = list(map(lambda x: x.serialize(), users))
@@ -25,6 +25,7 @@ def handle_hello():
 @api.route('/hash', methods=['POST', 'GET'])
 def handle_hash():
     
+    # Genera token
     expiracion = datetime.timedelta(days=3)
     access_token = create_access_token(identity='mortega@4geeks.co', expires_delta=expiracion)
 
@@ -93,10 +94,10 @@ def register():
     
     if not email:
         return "Email required", 401
-    username = request.json.get("username", None)
+    username = request.json.get("username", None) #Esto esta de mas
     if not username:
         return "Username required", 401
-    password = request.json.get("password", None)
+    password = request.json.get("password", None) #Esto esta de mas
     if not password:
         return "Password required", 401
 
@@ -117,9 +118,10 @@ def register():
 
     response = {
         "msg": "Added successfully",
-        "username": username
+        "username": username,
+        "password": hashed_password
     }
-    return jsonify(response), 200
+    return jsonify(response), 201 #201 es cuando se crea un recurso
 
 
     return jsonify(response_body), 200

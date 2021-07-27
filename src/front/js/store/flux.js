@@ -27,14 +27,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("-->", JSON.stringify(userLocal));
 			},
 			setLogin: user => {
-				const additionalSettings = {
-					method: "POST",
-					header: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify(user)
-				};
-
 				fetch(process.env.BACKEND_URL + "/api/login", {
 					method: "POST",
 					body: JSON.stringify(user),
